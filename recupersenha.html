@@ -3,23 +3,28 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cadastro</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Recuperar Senha</title>
+    <link rel="stylesheet" href="recupersenha.css">
 </head>
 <body>
     <div class="container">
         <div class="caixadelogin">
-            <h2>Cadastro</h2>
-            <p>Por favor, preencha os campos abaixo.</p>
+            <h2>Recuperar Senha</h2>
+            <p>Por favor, insira seu email abaixo.</p>
+            
             <form action="#" method="post">
-                <input type="text" class="form-control" placeholder="Nome" name="nome" required />
                 <input type="email" class="form-control" placeholder="Email" name="email" required />
-                <input type="password" class="form-control" placeholder="Senha" name="senha" required />
-                <input type="password" class="form-control" placeholder="Confirme sua Senha" name="confirmarsenha" required />
-                <button class="botao" type="submit">Cadastrar</button>
+                <button class="botao" type="submit">Enviar código</button>
             </form>
-            <p class="textodesla">voltar ao Login 
-                <a href="../jeanjena/index.html" style="color: #fff;">Login</a></p>
+
+            <p>Insira o código que foi enviado para seu email:</p>
+
+            <form action="#" method="post">
+                <input type="text" class="form-control" placeholder="Código de Recuperação" name="codigo" required />
+                <button class="botao" type="submit">Confirmar Código</button>
+            </form>
+
+            <p class="textodesla"><a href="../jeanjena/index.html">Voltar ao Login</a></p>
         </div>
     </div>
 </body>
