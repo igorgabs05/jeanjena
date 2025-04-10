@@ -24,7 +24,7 @@
                 <button class="botao" type="submit">Confirmar Código</button>
             </form>
 
-            <p class="textodesla"><a href="../jeanjena/index.html">Voltar ao Login</a></p>
+            <p class="textodesla"><a href="../jeanjena/index.php">Voltar ao Login</a></p>
         </div>
     </div>
 </body>
