@@ -11,9 +11,9 @@
         <div class="caixadelogin">
             <h2>Cadastro</h2>
             <p>Por favor, preencha os campos abaixo.</p>
-            <form action="#" method="post">
-                <input type="text" class="form-control" placeholder="Nome" name="nome" required />
-                <input type="email" class="form-control" placeholder="Email" name="email" required />
+            <form  action=" ../controller/CadastroController.php" method="POST">
+                <input type="text" class="form-label" placeholder="Nome" name="nome" required />
+                <input type="text" name ="Fullname" class="form-label" placeholder="Email" name="email" required />
                 <input type="password" class="form-control" placeholder="Senha" name="senha" required />
                 <input type="password" class="form-control" placeholder="Confirme sua Senha" name="confirmarsenha" required />
                 <button class="botao" type="submit">Cadastrar</button>

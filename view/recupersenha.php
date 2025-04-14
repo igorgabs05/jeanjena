@@ -19,7 +19,7 @@
 
             <p>Insira o código que foi enviado para seu email:</p>
 
-            <form action="#" method="post">
+            <form action="" method="post">
                 <input type="text" class="form-control" placeholder="Código de Recuperação" name="codigo" required />
                 <button class="botao" type="submit">Confirmar Código</button>
             </form>
