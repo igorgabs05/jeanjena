@@ -1,6 +1,7 @@
 <?php
 session_start();
 require '../model/LoginModel.php';
+require '../service/funcoes.php';
 
 if ($_POST) {
     $usuario = $_POST['usuario'];

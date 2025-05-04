@@ -4,11 +4,14 @@ require_once '../service/conexao.php';
 
 if (!empty($_POST['codigo'])) {
     $codigoDigitado = trim($_POST['codigo']);
+
     if (!isset($_SESSION['id_usuario_recuperacao'])) {
         $_SESSION['msg'] = "Sessão expirada. Por favor, tente recuperar a senha novamente.";
         header("Location: ../view/recuperarsenha.php");
         exit();
     }
+
+    
     $IDusuario = $_SESSION['id_usuario_recuperacao'];
 
     $pdo = new UsePDO();

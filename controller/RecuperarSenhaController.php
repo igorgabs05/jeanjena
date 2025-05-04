@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../model/RecuperarSenhaModel.php';
+require_once '../service/funcoes.php';
 
 function gerarCodigo() {
     return rand(1000, 9999);
@@ -8,19 +9,14 @@ function gerarCodigo() {
 
 $model = new RecuperarSenhaModel();
 
-
 if (!empty($_POST['email'])) {
-
     $email = trim($_POST['email']);
-
     $IDusuario = $model->buscarIDusuarioPorEmail($email);
-    
 
     if ($IDusuario) {
         $codigo = gerarCodigo();
         $model->salvarCodigo($IDusuario, $codigo);
 
-        // IM GHOST THE DOWM COLL
         $_SESSION['msg'] = "Código enviado para seu email!";
         $_SESSION['email_recuperacao'] = $email;
         $_SESSION['codigo_recuperacao'] = $codigo;

@@ -13,6 +13,6 @@ if ($conexao->connect_error) {
     die("Falha na conexão: " . $conexao->connect_error);
 }
 
-// Definir charset para UTF-8
+
 $conexao->set_charset("utf8");
 ?>

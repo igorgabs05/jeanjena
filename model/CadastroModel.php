@@ -1,23 +1,36 @@
 <?php
 require '../service/conexao.php';
+require '../service/funcoes.php';
 
 function register($fullname, $email, $senha) {
     $conn = new usePDO;
     $instance = $conn->getInstance();
 
+    
+    $sql = "SELECT IDusuario FROM usuario WHERE email = ?";
+    $stmt = $instance->prepare($sql);
+    $stmt->execute([$email]);
+
+    if ($stmt->rowCount() > 0) {
+        return false; 
+    
+
+    
     $hashed_password = password_hash($senha, PASSWORD_DEFAULT);
 
-    // Inserindo na tabela usuario
+  
     $sql = "INSERT INTO usuario(email, senha) VALUES (?, ?)";
     $stmt = $instance->prepare($sql);
     $stmt->execute([$email, $hashed_password]);
 
+    
     $idusuario = $instance->lastInsertId();
 
-    // Inserindo na tabela pessoa
-    $sql = "INSERT INTO pessoa(nome, IDusuario, email) VALUES (?, ?, ?)";
+ 
+    $sql = "INSERT INTO pessoa(nome, IDusuario) VALUES (?, ?)";
     $stmt = $instance->prepare($sql);
-    $stmt->execute([$fullname, $idusuario, $email]);
+    $stmt->execute([$fullname, $idusuario]);
 
     return $idusuario;
 }
+?>
