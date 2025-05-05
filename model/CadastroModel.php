@@ -33,4 +33,5 @@ function register($fullname, $email, $senha) {
 
     return $idusuario;
 }
+}
 ?>
