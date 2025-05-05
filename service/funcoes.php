@@ -3,7 +3,7 @@
 if (!function_exists('buscarEmails')) {
     function buscarEmails($conexao) {
         $emails = array();
-        $sql = "SELECT * FROM codigo";
+        $sql = "SELECT * FROM code";
         $resultado = $conexao->query($sql);
         
         if ($resultado && $resultado->num_rows > 0) {
@@ -19,7 +19,7 @@ if (!function_exists('buscarEmails')) {
 // Função para buscar um email específico pelo ID
 if (!function_exists('buscarEmailPorId')) {
     function buscarEmailPorId($conexao, $id) {
-        $sql = "SELECT * FROM codigo WHERE id = ?";
+        $sql = "SELECT * FROM code WHERE id = ?";
         $stmt = $conexao->prepare($sql);
         $stmt->bind_param("i", $id);
         $stmt->execute();
@@ -36,7 +36,7 @@ if (!function_exists('buscarEmailPorId')) {
 // Função para marcar um email como lido
 if (!function_exists('marcarComoLido')) {
     function marcarComoLido($conexao, $id) {
-        $sql = "UPDATE codigo SET lido = 1 WHERE id = ?";
+        $sql = "UPDATE code SET lido = 1 WHERE id = ?";
         $stmt = $conexao->prepare($sql);
         $stmt->bind_param("i", $id);
         return $stmt->execute();

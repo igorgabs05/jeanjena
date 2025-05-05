@@ -1,37 +1,37 @@
 <?php
-require '../service/conexao.php';
-require '../service/funcoes.php';
+require_once '../service/conexao.php';
 
-function register($fullname, $email, $senha) {
-    $conn = new usePDO;
-    $instance = $conn->getInstance();
+class CadastroModel {
+    private $conn;
 
-    
-    $sql = "SELECT IDusuario FROM usuario WHERE email = ?";
-    $stmt = $instance->prepare($sql);
-    $stmt->execute([$email]);
+   function __construct() {
+        $this->conn = new usePDO;
+    }
 
-    if ($stmt->rowCount() > 0) {
-        return false; 
-    
+    function registerUser($fullname, $email, $senha) {
+        $instance = $this->conn->getInstance();
 
-    
-    $hashed_password = password_hash($senha, PASSWORD_DEFAULT);
+        $sql = "SELECT IDusuario FROM usuario WHERE email = ?";
+        $stmt = $instance->prepare($sql);
+        $stmt->execute([$email]);
 
-  
-    $sql = "INSERT INTO usuario(email, senha) VALUES (?, ?)";
-    $stmt = $instance->prepare($sql);
-    $stmt->execute([$email, $hashed_password]);
+        if ($stmt->rowCount() > 0) {
+            return false;
+        }
 
-    
-    $idusuario = $instance->lastInsertId();
+        $hashed_password = password_hash($senha, PASSWORD_DEFAULT);
 
- 
-    $sql = "INSERT INTO pessoa(nome, IDusuario) VALUES (?, ?)";
-    $stmt = $instance->prepare($sql);
-    $stmt->execute([$fullname, $idusuario]);
+        $sql = "INSERT INTO usuario(email, senha) VALUES (?, ?)";
+        $stmt = $instance->prepare($sql);
+        $stmt->execute([$email, $hashed_password]);
 
-    return $idusuario;
-}
+        $idusuario = $instance->lastInsertId();
+
+        $sql = "INSERT INTO pessoa(nome, IDusuario) VALUES (?, ?)";
+        $stmt = $instance->prepare($sql);
+        $stmt->execute([$fullname, $idusuario]);
+
+        return $idusuario;
+    }
 }
 ?>

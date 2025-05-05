@@ -1,6 +1,5 @@
 <?php
 require '../model/CadastroModel.php';
-require '../service/funcoes.php';
 
 session_start();
 
@@ -16,7 +15,8 @@ if ($_POST) {
         exit;
     }
 
-    $result = register($fullName, $email, $password);
+    $model = new CadastroModel();
+    $result = $model->registerUser($fullName, $email, $password);
 
     if ($result) {
         $_SESSION['msg'] = "Cadastro realizado com sucesso!";
@@ -27,3 +27,4 @@ if ($_POST) {
     header("Location: ../view/cadastro.php");
     exit;
 }
+?>
